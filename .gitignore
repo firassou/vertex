@@ -36,6 +36,13 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local skill install state
+/.agents/
+/.claude/
+/agent/
+skills-lock.json
+vskill.lock
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
