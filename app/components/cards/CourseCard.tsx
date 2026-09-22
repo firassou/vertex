@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { BarChart2, Clock, Layers } from "lucide-react";
 
 type CourseCardProps = {
@@ -6,7 +7,8 @@ type CourseCardProps = {
   level: string;
   duration: string;
   moduleCount: number;
-  avatarLabel: string;
+  avatarLabel: ReactNode;
+  avatarClassName?: string;
   href?: string;
 };
 
@@ -17,10 +19,13 @@ export function CourseCard({
   duration,
   moduleCount,
   avatarLabel,
+  avatarClassName = "bg-neutral-900 text-white",
 }: CourseCardProps) {
   return (
     <div className="rounded-lg border border-neutral-200 bg-white p-4 shadow-sm">
-      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-sm bg-neutral-900 text-body-lg font-semibold text-white">
+      <div
+        className={`mb-3 flex h-10 w-10 items-center justify-center rounded-sm text-body-lg font-semibold ${avatarClassName}`}
+      >
         {avatarLabel}
       </div>
       <h3 className="text-heading-3 font-medium text-neutral-900">{title}</h3>
