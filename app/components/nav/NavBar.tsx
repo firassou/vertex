@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Bell } from "lucide-react";
+import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import { Logo } from "../ui/Logo";
 
 export function NavBar() {
@@ -27,9 +28,29 @@ export function NavBar() {
           >
             <Bell size={20} strokeWidth={2} />
           </button>
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary-100 text-small font-semibold text-primary-500">
-            V
-          </span>
+          <Show when="signed-out">
+            <div className="flex items-center gap-3">
+              <SignInButton>
+                <button
+                  type="button"
+                  className="text-body font-medium text-neutral-700 hover:text-neutral-900"
+                >
+                  Sign in
+                </button>
+              </SignInButton>
+              <SignUpButton>
+                <button
+                  type="button"
+                  className="rounded-full bg-primary-500 px-4 py-2 text-small font-semibold text-white hover:bg-primary-600"
+                >
+                  Sign up
+                </button>
+              </SignUpButton>
+            </div>
+          </Show>
+          <Show when="signed-in">
+            <UserButton />
+          </Show>
         </div>
       </div>
     </header>
